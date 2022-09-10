@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ByChoice.Models.ProductMatch>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.ProductModel.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoLight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Radio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Charger)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlashLight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TvSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudyLight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeUse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TravelingLight)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductModel.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoLight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Radio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Charger)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlashLight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TvSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudyLight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeUse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TravelingLight)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ProductModelId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ProductModelId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ProductModelId })
+        </td>
+    </tr>
+}
+
+</table>

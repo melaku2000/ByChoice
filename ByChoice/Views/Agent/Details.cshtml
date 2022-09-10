@@ -1,0 +1,127 @@
+﻿@model ByChoice.Models.Agent
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Agent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            <img  src="/Agent/RetrieveImage/@Model.Id" alt="" height=130 width=180 />
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AgentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AgentCatagory.AgentCatagoryType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgentCatagory.AgentCatagoryType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.FullName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.TaxNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.TaxNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.Region.RegionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.Region.RegionName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.Subcity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.Subcity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.Woreda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.Woreda)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.Kebele)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.Kebele)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.HouseNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.HouseNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Back to List", "Index")
+    }
+</p>

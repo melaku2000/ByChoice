@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ByChoice.Models.Warranty>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.AgentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WarrantyCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoledDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMSID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.AgentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WarrantyCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoledDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMSID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.WarrantyId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WarrantyId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WarrantyId })
+        </td>
+    </tr>
+}
+
+</table>

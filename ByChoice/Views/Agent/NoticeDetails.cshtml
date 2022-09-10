@@ -1,0 +1,46 @@
+﻿@model  ByChoice.Models.AgentNotice
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Notice</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Notice Type
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notice.NoticeType.NoticeTypeName)
+        </dd>
+
+        <dt>
+            Post Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notice.PostDate)
+        </dd>
+
+        <dt>
+            Event Date
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notice.Detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notice.Detail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Notice")
+</p>

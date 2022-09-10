@@ -1,0 +1,81 @@
+﻿<div style="align-items:center">
+    <img alt="IE logo" style="align-self:center;padding-left:20px" src="~/Content/Images/buychoice logo.png" width="100" />
+    <h4 style="text-align:center; color:white;">Adminstrator</h4>
+    @*<h4 style="text-align:center; color:white;">Dashboard</h4>*@
+    <table class="table" style="border-color:Background">
+        <tr>
+            <td style="text-align:center;">
+                @Html.ActionLink("Dashboard", "Index", "Admin", null, new { @style = "color:lightgray;" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5 style="text-align:center; color:white;">Manage Agent</h5>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center;">
+                @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { style = "color:lightgray" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center;">
+                @Html.ActionLink("Agents", "Index", "Agent", null, new { style = "color:lightgray" })
+            </td>
+        </tr>
+        @*<tr>
+            <td style="text-align:center;">
+                @Html.ActionLink("Micro-Finances", "Index", "Microe", null, new { style = "color:lightgray" })
+            </td>
+        </tr>*@
+        <tr>
+            <td style="text-align:center;">
+                @Html.ActionLink("Products", "Index", "Product", null, new { style = "color:lightgray" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center;">
+                @Html.ActionLink("Events", "Index", "Event", null, new { style = "color:lightgray" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; color:white;">
+                @Html.ActionLink("Notices", "Index", "Notice", null, new { @style = "color:lightgray;" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; color:white;">
+                @Html.ActionLink("Upload Product", "Index", "ProductModel", null, new { @style = "color:lightgray;" })
+            </td>
+        </tr>
+
+        <tr>
+            <td style="text-align:center; color:white;">
+                @Html.ActionLink("Add Bulk product", "UploadProductList", "Product", null, new { @style = "color:lightgray;" })
+            </td>
+        </tr>
+
+        @*<tr>
+            <th style="text-align:center; color:white;">
+                <h5>Order & Claim</h5>
+            </th>
+        </tr>
+        <tr>
+            <td style="text-align:center; color:white;">
+                @Html.ActionLink("Order", "AdminOrder", "Admin", null, new { @style = "color:lightgray;" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; color:white;">
+                @Html.ActionLink("Claim", "AdminClaim", "Admin", null, new { @style = "color:lightgray;" })
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center;"></td>
+        </tr>
+        <tr>
+            <td style="text-align:center;"></td>
+        </tr>
+        *@
+    </table>
+</div>

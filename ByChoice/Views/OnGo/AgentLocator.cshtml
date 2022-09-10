@@ -1,0 +1,89 @@
+﻿@model PagedList.IPagedList<ByChoice.Models.Agent>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "AgentLocator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Agent Locator</h2>
+@using (Html.BeginForm("AgentLocator", "OnGo", FormMethod.Get))
+{
+<p>
+    <div class="form-group col-md-7">
+        @*@Html.Label("RegionId", "RegionId", htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <input type="submit" value="Region Filter" class="btn btn-primary" />
+        <div class="col-md-10">
+            @Html.DropDownList("RegionId", null, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div> 
+    @*Find by Phone No: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)*@
+</p>
+}
+
+<table class="table">
+    <tr>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>*@
+        <th>
+            Agent Name
+        </th>
+        <th>
+            Catagory
+        </th>
+        <th>
+            Contact Person
+        </th>
+        <th>
+            Region
+        </th>
+        <th>
+            Tax Number
+        </th>
+        <th>
+            Phone No
+        </th>
+
+        @*<th></th>*@
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <!--
+            <td>
+                <img src="/Agent/RetrieveImage/@item.Id" alt="" height=130 width=180 />
+            </td>
+                -->
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentCatagory.AgentCatagoryType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.Region.RegionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.TaxNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.PhoneNumber)
+            </td>
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>*@
+        </tr>
+    }
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

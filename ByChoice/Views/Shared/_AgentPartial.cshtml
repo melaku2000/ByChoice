@@ -1,0 +1,85 @@
+﻿@using Microsoft.AspNet.Identity
+@using ByChoice.Models
+
+@{
+    ApplicationDbContext _DBcontext;
+    _DBcontext = new ApplicationDbContext();
+    //if (User.IsInRole("Agent"))
+    //{
+    var userId = User.Identity.GetUserId();
+    var agent = _DBcontext.Agents.SingleOrDefault(u => u.Id == userId);
+    if (agent != null)
+    {
+        <div>
+            @*<img class="img-circular" src="/Agent/RetrieveImage/@agent.AgentId" alt="" height=150 width=150 />*@
+            <img class="img-circular" src="/Agent/RetrieveImage/@User.Identity.GetUserId().ToString()" alt="" height=130 width=180 />
+
+            <h5 style="text-align:center; color:white;">@agent.AgentName</h5>
+            <table class="table table-hover">
+                <tr>
+                    <td align="center">
+                        @Html.ActionLink("Agent Profile", "Details", new { Controller = "Agent", action = "Details", id = User.Identity.GetUserId() }, new { @style = "color:gray;" })
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        @Html.ActionLink("Products", "Index", "Product", null, new { @style = "color:gray;" })
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        @Html.ActionLink("Customers", "Index", "Customer", null, new { @style = "color:gray;" })
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="center">
+                        @Html.ActionLink("Stock Transfer", "Index", "WarrantyTransfer", null, new { @style = "color:gray;" })
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h5 style="text-align:center; color:white;">Event & Notice</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        @Html.ActionLink("Event", "Event", "Agent", null, new { @style = "color:gray;" })
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        @Html.ActionLink("Notice", "Notice", "Agent", null, new { @style = "color:gray;" })
+                    </td>
+                </tr>
+                @*<tr>
+                        <td>
+                            <h5 style="text-align:center; color:white;">Order & Claim</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            @Html.ActionLink("Order", "Order", "Agent", null, new { @style = "color:gray;" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            @Html.ActionLink("Claim", "Claim", "Agent", null, new { @style = "color:gray;" })
+                        </td>
+                    </tr>
+                *@
+            </table>
+        </div>
+    }
+    else
+    {
+        <table>
+            <tr>
+                <td align="center">
+                    You are not Complete the Registeration yet. Contact service provider
+                </td>
+            </tr>
+        </table>
+    }
+}

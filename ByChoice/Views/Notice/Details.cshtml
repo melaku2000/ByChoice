@@ -1,0 +1,91 @@
+﻿@model ByChoice.Models.DetailNoticeViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Notice</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NoticeType.NoticeTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoticeType.NoticeTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Detail)
+        </dd>
+
+    </dl>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            AgentName
+        </th>
+        <th>
+            Catagory
+        </th>
+        <th>
+            FullName
+        </th>
+        <th>
+            Region
+        </th>
+        <th>
+            TaxNumber
+        </th>
+        <th>
+            PhoneNumber
+        </th>
+    </tr>
+    @* @for(int i=0;i<Model.Agents.Count();i++)*@
+
+    @foreach (var item in Model.Agents)
+    {
+        <tr>
+            <td>
+                <label> @item.AgentName</label>
+            </td>
+            <td>
+                <label> @item.AgentCatagory.AgentCatagoryType</label>
+            </td>
+            <td>
+                <label> @item.ApplicationUser.FullName</label>
+            </td>
+            <td>
+                <label> @item.ApplicationUser.Region.RegionName</label>
+            </td>
+            <td>
+                <label> @item.ApplicationUser.TaxNumber</label>
+            </td>
+            <td>
+                <label> @item.ApplicationUser.PhoneNumber</label>
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NoticeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

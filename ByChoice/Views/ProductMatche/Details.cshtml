@@ -1,0 +1,115 @@
+﻿@model ByChoice.Models.ProductMatch
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<dl>
+    <dt>
+        @Html.DisplayNameFor(model => model.ProductModel.Image)
+    </dt>
+
+    <dd>
+        <img src="/ProductModel/RetrieveImage/@Model.ProductModel.ProductModelId" alt="" height=135 width=200 />
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.ProductModel.ProductName)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.ProductModel.ProductName)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.ProductModel.BrandCompanyName)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.ProductModel.BrandCompanyName)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.ProductModel.Model)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.ProductModel.Model)
+    </dd>
+</dl>
+<div>
+    <h4>Product Match</h4>
+    <hr />
+    <dl class="dl-horizontal">
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductModel.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductModel.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoLight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoLight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Radio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Radio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FlashLight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlashLight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TvSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TvSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudyLight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudyLight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeUse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeUse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TravelingLight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TravelingLight)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductModelId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,110 @@
+﻿@*@model IEnumerable<ByChoice.Models.Customer>*@
+@model PagedList.IPagedList<ByChoice.Models.Customer>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Index", "Customer", FormMethod.Get))
+{
+    <p>
+        Find by Phone No: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+<table class="table">
+    <tr>
+
+        <th>
+            First Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            Country
+        </th>
+        <th>
+            Region
+        </th>
+        <th>
+            Subc ity
+        </th>
+        <th>
+            Woreda
+        </th>
+        <th>
+            Kebele
+        </th>
+        <th>
+            House Number
+        </th>
+        <th>
+            Regester Date
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.IsSelected)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region.RegionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subcity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Woreda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kebele)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HouseNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegesterDate)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.IsSelected)
+                </td>*@
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.CustomerId }) |*@
+                @Html.ActionLink("Go to Products", "CustomerProduct", new { id = item.CustomerId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CustomerId }) |
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.CustomerId })*@
+            </td>
+        </tr>
+    }
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

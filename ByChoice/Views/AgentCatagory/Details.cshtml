@@ -1,0 +1,27 @@
+﻿@model ByChoice.Models.AgentCatagory
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AgentCatagory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AgentCatagoryType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgentCatagoryType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AgentCatagoryId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

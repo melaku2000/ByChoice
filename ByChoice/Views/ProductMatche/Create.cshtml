@@ -1,0 +1,155 @@
+﻿@model ByChoice.Models.ProductMatch
+@using ByChoice.Models
+@{
+    /**/
+
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+@{
+    var Product = (ProductModel)ViewBag.ProductModel;
+    if (Product != null)
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                Image
+            </dt>
+
+            <dd>
+                <img src="/ProductModel/RetrieveImage/@Product.ProductModelId" alt="" height=135 width=200 />
+            </dd>
+            <dt>
+                Product Catagory
+            </dt>
+
+            <dd>
+                @Product.ProductCatagory.ProductCatagoryName
+            </dd>
+
+            <dt>
+                Name
+            </dt>
+
+            <dd>
+                @Product.ProductName
+            </dd>
+
+            <dt>
+                Brand
+            </dt>
+
+            <dd>
+                @Product.BrandCompanyName
+            </dd>
+
+            <dt>
+                Model
+            </dt>
+
+            <dd>
+                @Product.Model
+            </dd>
+            <dt>
+                Description
+            </dt>
+
+            <dd>
+                @Product.Description
+            </dd>
+
+        </dl>
+    }
+}
+
+@using (Html.BeginForm())
+{
+    ProductModel product = (ProductModel)ViewBag.ProductModel;
+
+    @Html.Hidden("ProductModelId",product.ProductModelId)
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>ProductMatch</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoLight, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NoLight, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NoLight, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Radio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Radio)
+                    @Html.ValidationMessageFor(model => model.Radio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Charger, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Charger)
+                    @Html.ValidationMessageFor(model => model.Charger, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.FlashLight, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.FlashLight)
+                    @Html.ValidationMessageFor(model => model.FlashLight, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TvSize, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TvSize, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TvSize, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StudyLight, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StudyLight)
+                @Html.ValidationMessageFor(model => model.StudyLight, "", new { @class = "text-danger" })
+            </div>
+        </div>       
+        <div class="form-group">
+            @Html.LabelFor(model => model.HomeUse, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HomeUse)
+                @Html.ValidationMessageFor(model => model.HomeUse, "", new { @class = "text-danger" })
+            </div>
+        </div>       
+        <div class="form-group">
+            @Html.LabelFor(model => model.TravelingLight, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TravelingLight)
+                @Html.ValidationMessageFor(model => model.TravelingLight, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

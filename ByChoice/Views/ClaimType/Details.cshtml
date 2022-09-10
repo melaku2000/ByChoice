@@ -1,0 +1,35 @@
+﻿@model ByChoice.Models.ClaimType
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ClaimType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClaimTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClaimTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsSelected)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsSelected)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClaimTypeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

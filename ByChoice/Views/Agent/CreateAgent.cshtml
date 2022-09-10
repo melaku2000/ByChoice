@@ -1,0 +1,76 @@
+﻿@*@model IEnumerable<ByChoice.Models.ApplicationUser>*@
+@model PagedList.IPagedList<ByChoice.Models.ApplicationUser>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "CreateAgent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Agent</h2>
+@using (Html.BeginForm("CreateAgent", "Agent", FormMethod.Get))
+{
+    <p>
+        Find by Phone No: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Region
+        </th>
+        <th>
+            Tax No
+        </th>
+        <th>
+            Full Name
+        </th>
+        <th>
+            Register Date
+        </th>
+        <th>
+            E-mail
+        </th>
+        <th>
+            Phone No
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region.RegionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaxNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegesterDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @if (item.EmailConfirmed == true)
+                {
+                    @Html.ActionLink("Create", "Create", new { id = item.Id })
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

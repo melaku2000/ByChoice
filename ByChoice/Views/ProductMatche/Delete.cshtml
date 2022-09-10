@@ -1,0 +1,73 @@
+﻿@model ByChoice.Models.ProductMatch
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ProductMatch</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductMatchPurpose.Purpose)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductMatchPurpose.Purpose)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductModel.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductModel.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoLight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoLight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Radio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Radio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FlashLight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlashLight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TvSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TvSize)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

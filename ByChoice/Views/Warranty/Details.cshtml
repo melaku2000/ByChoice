@@ -1,0 +1,67 @@
+﻿@model ByChoice.Models.Warranty
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Warranty</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.AgentId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.AgentId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WarrantyCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WarrantyCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoledDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoledDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SMSID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SMSID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WarrantyId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

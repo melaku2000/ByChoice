@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ByChoice.Models.AgentEvent>
+
+@{
+    ViewBag.Title = "Event";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Event</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Event.EventType.EventName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Event.PostDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Event.EventDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Event.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Event.Detail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsSelected)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.EventType.EventName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.PostDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.EventDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.Location)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.Detail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.IsSelected)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "EventDetails", new { id = item.AgentEventId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.AgentEventId })
+            </td>
+        </tr>
+    }
+
+</table>

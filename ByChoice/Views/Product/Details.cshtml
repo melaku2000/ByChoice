@@ -1,0 +1,130 @@
+﻿@model ByChoice.Models.ProductDetailViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Agent.AgentName)
+        </dt>
+
+        <dd>
+            <img src="/ProductModel/RetrieveImage/@Model.Product.ProductModel.ProductModelId" alt="" height=135 width=200 />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Agent.AgentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Agent.AgentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.ProductModel.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.ProductModel.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Serial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Serial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.ManufacturedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.ManufacturedDate)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Sold)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sold)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsSelected)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsSelected)
+        </dd>*@
+
+    </dl>
+</div>
+<table class="table">
+    <thead >
+        <tr>
+            <td style="text-align:center;font-size:larger" colspan="3">
+                Product Transfer history
+            </td>
+        </tr>
+    </thead>
+    <tr>
+        <th>
+            From Agent
+        </th>
+        <th>
+            To Agent
+        </th>
+        <th>
+            Transfered Date
+        </th>
+       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.ProductHistories)
+    {
+        //var sold = "";
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Agent.AgentName)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductHistory.WarrantyTransfer.FromAgent.AgentName)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductHistory.WarrantyTransfer.ToAgent.AgentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductHistory.TransferdTime)
+            </td>
+            @*<td>
+                @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) @:|
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                }
+            </td>*@
+        </tr>
+    }
+
+</table>
+<p>
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Product.ProductId }) @:|
+}
+    @Html.ActionLink("Back to List", "Index")
+</p>

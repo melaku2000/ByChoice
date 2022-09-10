@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNet.Identity
+@using ByChoice.Models
+
+
+@{
+    ApplicationDbContext _DBcontext;
+    _DBcontext = new ApplicationDbContext();
+    if (User.IsInRole("MicroFinance"))
+    {
+        <div>
+
+            <h5 style="text-align:center; color:white;"> @*@_DBcontext.Micros.Single(m=>m.Id==User.Identity.GetUserId()).MicroName*@</h5>
+            <h5 style="text-align:center; color:white;">Micro-Finance</h5>
+            <table class="table table-hover">
+                <tr>
+                    <td align="center">
+                        @Html.ActionLink("Profile", "Index", new { Controller = "Micro", action = "Index" }, new { @style = "color:gray;" })
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        @Html.ActionLink("Creadit Request", "CreaditRequest", new { Controller = "Micro", action = "CreaditRequest" }, new { @style = "color:gray;" })
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        @Html.ActionLink("Approved Requests", "ApprovedRequest", new { Controller = "Micro", action = "ApprovedRequest" }, new { @style = "color:gray;" })
+                    </td>
+                </tr>
+                @* <tr>
+             <td>
+                 <h5 style="text-align:center; color:white;">Rates</h5>
+             </td>
+         </tr>
+        <tr>
+             <td align="center">
+                 @Html.ActionLink("Intrest Rate", "MicroRate", new { Controller = "Micro", action = "MicroRate" }, new { @style = "color:gray;" })
+             </td>
+         </tr>*@
+                <tr>
+                    <td align="center">
+                        @Html.ActionLink("Customers", "Customers", new { Controller = "Micro", action = "Customers" }, new { @style = "color:gray;" })
+                    </td>
+                </tr>
+                @* <tr>
+                   <td align="center">
+                @Html.ActionLink("Debt Payment", "", "", null, new { @style = "color:gray;" })
+            </td>
+        </tr>*@
+            </table>
+        </div>
+    }
+}

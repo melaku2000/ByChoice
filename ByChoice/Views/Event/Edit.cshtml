@@ -1,0 +1,131 @@
+﻿@model ByChoice.Models.Event
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Event</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.EventTypeId, "EventTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("EventTypeId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EventTypeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EventDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EventDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EventDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+
+    <table class="table" border="1">
+        <tr>
+            <th>
+                Agent Name
+            </th>
+            <th>
+                Catagory
+            </th>
+            <th>
+                Contact person
+            </th>
+            <th>
+                Region
+            </th>
+            <th>
+                Tax Number
+            </th>
+            <th>
+                Phone Number
+            </th>
+
+        </tr>
+        <tr>
+            @{
+                int cnt = 0;
+                List<ByChoice.DTOs.AgentEventDTO> agents = ViewBag.Agents;
+
+                foreach (var agent in agents)
+                {
+                    @*if (cnt++ % 3 == 0)
+                    {
+                    @:</tr><tr>
+                    }*@
+                @:</tr><tr>
+
+
+
+
+    @:<td>
+        <input type="checkbox"
+               name="selectedAgent"
+               value="@agent.Id"
+               @(Html.Raw(agent.IsSelected ? "checked=\"checked\"" : "")) />
+        @agent.AgentName 
+    @:</td>
+    @:<td>
+        @agent.AgentCatagoryType
+    @:</td> 
+        @:<td>
+        @agent.FullName
+    @:</td>
+    @:<td>
+        @agent.RegionName
+    @:</td>
+    @:<td>
+        @agent.TaxNumber
+    @:</td> 
+        @:<td>
+        @agent.PhoneNumber
+    @:</td>
+}
+@:</tr>
+            }
+        </table>
+
+                            }
+
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")
+                }

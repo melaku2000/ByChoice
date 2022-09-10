@@ -1,0 +1,203 @@
+﻿@model ByChoice.Models.ProductModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<div class="form-horizontal">
+    <div class="col-md-5">
+        <h4>ProductModel</h4>
+        <hr />
+        <dl >
+            <dt>
+                @Html.DisplayNameFor(model => model.Image)
+            </dt>
+
+            <dd>
+                <img src="/ProductModel/RetrieveImage/@Model.ProductModelId" alt="" height=135 width=200 />
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductCatagory.ProductCatagoryName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductCatagory.ProductCatagoryName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BrandCompanyName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BrandCompanyName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Model)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Model)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.WarrantyPeriod)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.WarrantyPeriod)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LifeTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LifeTime)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Browsher)
+            </dt>
+
+            <dd>
+                @if (Model.Browsher != null)
+                {
+                    @Html.ActionLink("Browsher", "RetrieveBrowsher", new { Controller = "ProductModel", Action = "RetrieveBrowsher", id = Model.ProductModelId }, null)
+                }
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Certificate)
+            </dt>
+
+            <dd>
+                @if (Model.Certificate != null)
+                {
+                    @Html.ActionLink("Certeficate", "RetrieveCerteficate", new { Controller = "ProductModel", Action = "RetrieveCerteficate", id = Model.ProductModelId }, null)
+                }
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+        </dl>
+        <p>
+            @Html.ActionLink("Edit Product Model", "Edit", new { id = Model.ProductModelId }) |
+        </p>
+    </div>
+
+    @{
+        if (Model.ProductMatch != null)
+        {
+            <div class="col-md-5">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.ProductMatch.NoLight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ProductMatch.NoLight, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.ProductMatch.Radio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ProductMatch.Radio, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.ProductMatch.FlashLight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ProductMatch.FlashLight, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.ProductMatch.TvSize)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ProductMatch.TvSize, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.ProductMatch.StudyLight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ProductMatch.StudyLight, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.ProductMatch.HomeUse)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ProductMatch.HomeUse, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.ProductMatch.TravelingLight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ProductMatch.TravelingLight, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                    </tr>
+
+
+                </table>
+                <p>
+                    @Html.ActionLink("Edit Detail", "Edit", new { @Controller = "ProductMatche", @Action = "Edit", @Id = Model.ProductModelId }) |
+                </p>
+            </div>
+        }
+        else
+        {
+            <p>
+                @Html.ActionLink("Add Detail", "Create", new { @Controller = "ProductMatche", @Action = "Create", @Id = Model.ProductModelId }) |
+            </p>
+        }
+
+    }
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

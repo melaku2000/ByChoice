@@ -1,0 +1,89 @@
+﻿@model ByChoice.Models.ConfermTransferViewModel
+
+@{
+    ViewBag.Title = "Transfer Warranty";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Transfer Warranty</h2>
+
+@using (Html.BeginForm("ConfermTransfer", "WarrantyTransfer", FormMethod.Post))
+{
+    var TransferWarranty = TempData["TransferWarranty"];
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.WarrantyTransfer.WarrantyTransferId)
+        @Html.HiddenFor(m => m.WarrantyTransfer.FromAgentId)
+        @Html.HiddenFor(m => m.WarrantyTransfer.ToAgentId)
+        @Html.HiddenFor(m => m.WarrantyTransfer.TransferCode)
+        @Html.HiddenFor(m => m.WarrantyTransfer.RequestDate)
+    @*<p>
+            Find by Serial No: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+            <input type="submit" value="Search" />
+        </p>*@
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+             <input type="submit" value="Create" class="btn btn-default"  />
+           @* @Html.ActionLink("Submit", "TransferWarranty", "TransferWarranty")*@
+        </div>
+    </div>
+    <table class="table">
+        <tr>
+
+            <th>
+                Brand
+            </th>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Model
+            </th>
+            <th>
+                Serial Number
+            </th>
+            <th>
+                ManufacturedDate
+            </th>
+            <th>
+                Select
+            </th>
+            <th></th>
+        </tr>
+
+        @for (int i = 0; i < Model.Products.Count(); i++)
+
+        {
+            <tr>
+                <td>
+                    @Model.Products[i].ProductModel.BrandCompanyName
+                </td>
+                <td>
+                    @Model.Products[i].ProductModel.ProductName
+
+                </td>
+                <td>
+                    @Model.Products[i].ProductModel.Model
+
+                </td>
+                <td>
+                    @Model.Products[i].Serial
+
+                </td>
+                <td>
+                    @Model.Products[i].ManufacturedDate.ToShortDateString()
+                </td>
+                <td>
+                    @Html.CheckBoxFor(m => m.Products[i].IsSelected)
+                    @Html.HiddenFor(m => m.Products[i].ProductId)
+                    @Html.HiddenFor(m => m.Products[i].AgentId)
+                    @Html.HiddenFor(m => m.Products[i].Serial)
+                    @Html.HiddenFor(m => m.Products[i].ManufacturedDate)
+
+                    @Html.HiddenFor(m => m.WarrantyTransfer.WarrantyTransferId)
+                </td>
+            </tr>
+        }
+
+    </table>
+}

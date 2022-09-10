@@ -1,0 +1,35 @@
+﻿@model ByChoice.Models.AgentEvent
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AgentEvent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.TaxNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.TaxNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Event.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Event.Location)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AgentEventId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,106 @@
+﻿@model ByChoice.Models.CreateNoticeViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Notice</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoticeTypeId, "NoticeTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("NoticeTypeId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NoticeTypeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                AgentName
+            </th>
+            <th>
+                Catagory
+            </th>
+            <th>
+                FullName
+            </th>
+            <th>
+                Region
+            </th>
+            <th>
+                TaxNumber
+            </th>
+            <th>
+                PhoneNumber
+            </th>
+
+            <th>
+                Selected
+            </th>
+        </tr>
+
+        @for (int i = 0; i < Model.Agents.Count(); i++)
+
+        {
+            <tr>
+                <td>
+                    <label> @Model.Agents[i].AgentName</label>
+                </td>
+                <td>
+                    <label> @Model.Agents[i].AgentCatagory.AgentCatagoryType</label>
+                </td>
+                <td>
+                    <label> @Model.Agents[i].ApplicationUser.FullName</label>
+                </td>
+                <td>
+                    <label> @Model.Agents[i].ApplicationUser.Region.RegionName</label>
+                </td>
+                <td>
+                    <label> @Model.Agents[i].ApplicationUser.TaxNumber</label>
+                </td>
+                <td>
+                    <label> @Model.Agents[i].ApplicationUser.PhoneNumber</label>
+                </td>
+                <td>
+                    @Html.CheckBoxFor(m => m.Agents[i].ApplicationUser.IsSelected)
+                    @Html.HiddenFor(m => m.Agents[i].Id)
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

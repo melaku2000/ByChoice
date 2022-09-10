@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Buy Choice Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="~/Home/"><img src="~/Content/Images/buychoice2.png" width="188" /></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+    <div class="sidenav">
+        @if (Request.IsAuthenticated)
+        {
+            if (User.IsInRole("Admin"))
+            {
+                @Html.Partial("_AdminPartial")
+            }
+            if (User.IsInRole("Agent"))
+            {
+                @Html.Partial("_AgentPartial")
+            }
+            if (User.IsInRole("MicroFinance"))
+            {
+                @Html.Partial("_MicroPartial")
+            }
+        }
+        else
+        {
+            @Html.Partial("_OnGoPartial")
+        }
+    </div>
+
+    <div class="container body-content main">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Buy Choice Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+<style>
+    .img-circular {
+        background-size: cover;
+        box-shadow: 10px 8px 2px #808080;
+        border-radius: 100px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        border-bottom-right-radius: 100px;
+        -webkit-border-bottom-right-radius: 100px;
+        -moz-border-radius-bottomright: 100px;
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 200px;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        background: linear-gradient(to top right, #232B2B, #5A6670);
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+    /* Page content */
+    .main {
+        margin-left: 200px; /* Same as the width of the sidenav */
+    }
+
+    .top-bar {
+        background: linear-gradient(to top right, #5A6670, #232B2B);
+    }
+</style>

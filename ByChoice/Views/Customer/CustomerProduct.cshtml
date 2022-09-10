@@ -1,0 +1,178 @@
+﻿@model ByChoice.Models.CustomerProductViewModel
+@{
+    ViewBag.Title = "CustomerProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h4>Customer</h4>
+    
+    <hr />
+    @using (Html.BeginForm("ConfermWarranty", "Customer", FormMethod.Post))
+    {
+        @Html.HiddenFor(model => model.Customer.CustomerId)
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.CustomerPhone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer.CustomerPhone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.Country)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer.Country)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.Region.RegionName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer.Region.RegionName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.Subcity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer.Subcity)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.Woreda)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer.Woreda)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.Kebele)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer.Kebele)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.HouseNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer.HouseNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.RegesterDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer.RegesterDate)
+            </dd>
+            
+            
+
+        </dl>
+        @*<dl>
+            <dt>
+                <label class="control-label col-md-2" for="IsSelected">Request to Micro-finance</label>
+            </dt>
+            <dd>
+                @Html.CheckBoxFor(model => model.Customer.IsSelected, new { htmlAttributes = new { @class = "form-control" } })
+            </dd>
+        </dl>*@
+        <hr />
+
+        <table class="table">
+            <tr>
+                <th>
+                    Agent Name
+                </th>
+                <th>
+                    Company Brand
+                </th>
+                <th>
+                    Model
+                </th>
+                <th>
+                    Serial
+                </th>
+                <th>
+                    Manufacture Date
+                </th>
+                <th>
+                    Selected
+                </th>
+            </tr>
+
+            @for (int i = 0; i < Model.Products.Count(); i++)
+
+            {
+                <tr>
+                    <td>
+                        <label> @Model.Products[i].Agent.AgentName</label>
+                    </td>
+                    <td>
+                        <label> @Model.Products[i].ProductModel.BrandCompanyName</label>
+                    </td>
+                    <td>
+                        <label> @Model.Products[i].ProductModel.Model</label>
+                    </td>
+                    <td>
+                        <label> @Model.Products[i].Serial</label>
+                    </td>
+                    <td>
+                        <label> @Model.Products[i].ManufacturedDate</label>
+                    </td>
+                    <td>
+                        @Html.CheckBoxFor(m => m.Products[i].IsSelected)
+                        @Html.HiddenFor(m => m.Products[i].ProductId)
+                        @Html.HiddenFor(m => m.Products[i].ProductModel.ProductModelId)
+                        @Html.HiddenFor(m => m.Products[i].Serial)
+                        @Html.HiddenFor(m => m.Products[i].ManufacturedDate)
+                        @Html.HiddenFor(m => m.Products[i].AgentId)
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    }
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

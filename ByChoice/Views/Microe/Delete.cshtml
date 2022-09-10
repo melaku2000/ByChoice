@@ -1,0 +1,73 @@
+﻿@model ByChoice.Models.Micro
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Micro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.TaxNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.TaxNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MicroName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MicroName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IntrestRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IntrestRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

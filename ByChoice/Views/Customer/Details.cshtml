@@ -1,0 +1,150 @@
+﻿@model ByChoice.Models.CustomerDetailViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.CustomerPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.CustomerPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Region.RegionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Region.RegionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Subcity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Subcity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Woreda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Woreda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Kebele)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Kebele)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.HouseNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.HouseNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.RegesterDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.RegesterDate)
+        </dd>
+
+    </dl>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <td style="text-align:center;font-size:larger" colspan="4">
+                Products
+            </td>
+        </tr>
+    </thead>
+    <tr>
+        <th>
+            From Agent
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Serial No
+        </th>
+        <th>
+            Date
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.warranties)
+    {
+        //var sold = "";
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Agent.AgentName)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Agent.AgentName)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductModel.ModelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Serial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoledDate)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) @:|
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                    }
+                </td>*@
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Customer.CustomerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

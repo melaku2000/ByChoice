@@ -1,0 +1,176 @@
+﻿@model IEnumerable<ByChoice.Models.ProductModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<script type="text/javascript">
+    {
+        $(document).ready(function () {
+            $("#imageCarousel").carousel();
+        });
+    }
+</script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<div class="row" style="background-color:red">
+    <div id="imgCoursel" class="carousel slide" data-interval="2000" data-ride="carousel">
+        @*<div style="align-content:inherit">
+                <ol class="carousel-indicators">
+                    <li data-target="#imgCoursel" data-slide-to="0" class="active"></li>
+                    <li data-target="#imgCoursel" data-slide-to="1"></li>
+                    <li data-target="#imgCoursel" data-slide-to="2"></li>
+                    <li data-target="#imgCoursel" data-slide-to="3"></li>
+                    <li data-target="#imgCoursel" data-slide-to="4"></li>
+                    <li data-target="#imgCoursel" data-slide-to="5"></li>
+                    <li data-target="#imgCoursel" data-slide-to="6"></li>
+                </ol>
+            </div>*@
+        <div class="carousel-inner">
+            <div class="item active">
+                <table class="table">
+                    <tr>
+                        <th style="text-align:center;color:white">
+                            <h3 style="color:white">Solar Lights Products Sales</h3>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="text-align:center;color:white;font-size:large">ByChoiceWeb tests and selects the best solar lights and products available from quality manufacturers. We only sell lights that meet Lighting Africa Approved.</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="item">
+                <table class="table">
+                    <tr>
+                        <th style="text-align:center">
+                            <h3 style="color:white">IE CRM</h3>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="text-align:center;color:white;font-size:large">Our regional self-motivated Agentspowered by ByChoiceWebAgent managements</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="item">
+                <table class="table">
+                    <tr>
+                        <th style="text-align:center">
+                            <h3 style="color:white"> IE Warranty </h3>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="text-align:center;color:white;font-size:large">Our product warranty. No paper, make earth greener ByChoiceWebgenerate warranties code when purchased through Authorized Agent and sent SMS for the end Customers </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="item">
+                <table class="table">
+                    <tr>
+                        <th style="text-align:center">
+                            <h3 style="color:white">IE Call center</h3>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="color:white;text-align:center;font-size:large">Knowledgeable experts are available to answer your questions 24/7. Our team develops solutions specifically for yourProduct recommendations, Warranty administration and end of product life time collection.</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="item">
+                <table class="table">
+                    <tr>
+                        <th style="text-align:center">
+                            <h3 style="color:white">IE Job Creation</h3>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="text-align:center;color:white;font-size:large">ByChoiceWeb is growing quickly and offering opportunities for individual entrepreneurs and MSE groups to earn money whilst simultaneously helping your community. </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="item">
+                <table class="table">
+                    <tr>
+                        <th style="text-align:center">
+                            <h3 style="color:white">E-Waste Management</h3>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="text-align:center;color:white;font-size:large">Our Digital Warranty platform provides best products life history and easily identify product or battery end of life and send alarm for the end costumers to return the battery and to our Agents to collect or replace the battery end-consumers.</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="item">
+                <table class="table">
+                    <tr>
+                        <th style="text-align:center">
+                            <h3 style="color:white">IE 3party Warranty Service </h3>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="text-align:center;color:white;font-size:large">If you buy 3rd party certified product our IE 3party Warranty Service give you 2 year and 4 year warranty service with reasonable price </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@if (Model!=null)
+{
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <table class="table-bordered table">
+                    <thead>
+                        <tr>
+                            <th colspan="2" style="text-align:center">
+                                @item.ModelName
+                            </th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td colspan="2">
+                            <img src="/Home/RetrieveImage/@item.ProductModelId" alt="" height=130 width=180 />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Brand
+                        </td>
+                        <td style="width: 500px;">
+                            @Html.Raw(item.ProductCatagory.ProductCatagoryName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Model
+                        </td>
+                        <td style="width: 500px;">
+                            @Html.Raw(item.Model)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:right">
+                            @Html.ActionLink("Detail", "Detail", new { Controller = "Home", Action = "Detail", id = item.ProductModelId }, null)
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        }
+
+    </div>
+}

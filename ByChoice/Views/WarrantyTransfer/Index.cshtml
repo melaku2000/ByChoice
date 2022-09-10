@@ -1,0 +1,126 @@
+﻿@model PagedList.IPagedList<ByChoice.Models.Agent>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+@using (Html.BeginForm("Index", "WarrantyTransfer", FormMethod.Get))
+{
+    <p>
+        Find Agent by Phone No: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<div>
+    @*<table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ToAgent.AgentName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FromAgentId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RequestDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TransferCode)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ToAgent.AgentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FromAgentId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RequestDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TransferCode)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.WarrantyTransferId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.WarrantyTransferId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.WarrantyTransferId })
+                    </td>
+                </tr>
+            }
+
+        </table>*@
+</div>
+<table class="table">
+    <tr>
+        <th>
+            Agent Name
+        </th>
+        <th>
+            Catagory
+        </th>
+        <th>
+            Contact Person
+        </th>
+        <th>
+            Region
+        </th>
+        <th>
+            Tax Number
+        </th>
+        <th>
+            Phone No
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentCatagory.AgentCatagoryType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.Region.RegionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.TaxNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.PhoneNumber)
+            </td>
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>*@
+            <td>
+                @Html.ActionLink("Generate Code", "GenerateTransferCode", new { id = item.Id }) |
+                @Html.ActionLink("Insert Code", "InsertCode", new { id = item.Id }) 
+            </td>
+        </tr>
+    }
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

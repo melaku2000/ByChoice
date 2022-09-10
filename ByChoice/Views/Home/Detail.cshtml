@@ -1,0 +1,117 @@
+﻿@model ByChoice.Models.ProductModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProductModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductCatagory.ProductCatagoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductCatagory.ProductCatagoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrandCompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrandCompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WarrantyPeriod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WarrantyPeriod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LifeTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LifeTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            <img src="/ProductModel/RetrieveImage/@Model.ProductModelId" alt="" height=135 width=200 />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Browsher)
+        </dt>
+
+        <dd>
+            @if (Model.Browsher != null)
+            {
+                @Html.ActionLink("Browsher", "RetrieveBrowsher", new { Controller = "ProductModel", Action = "RetrieveBrowsher", id = Model.ProductModelId }, null)
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Certificate)
+        </dt>
+
+        <dd>
+            @if (Model.Certificate != null)
+            {
+                @Html.ActionLink("Certeficate", "RetrieveCerteficate", new { Controller = "ProductModel", Action = "RetrieveCerteficate", id = Model.ProductModelId }, null)
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    </dl>
+</div>

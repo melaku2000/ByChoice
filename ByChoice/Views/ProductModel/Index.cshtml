@@ -1,0 +1,112 @@
+﻿@model IEnumerable<ByChoice.Models.ProductModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductCatagory.ProductCatagoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrandCompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        @*<th>
+             @Html.DisplayNameFor(model => model.WarrantyPeriod)
+         </th>
+         <th>
+             @Html.DisplayNameFor(model => model.LifeTime)
+         </th>
+        <th>
+             @Html.DisplayNameFor(model => model.Description)
+         </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Browsher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Certificate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsSelected)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img src="/ProductModel/RetrieveImage/@item.ProductModelId" alt="" height=135 width=200 />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductCatagory.ProductCatagoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrandCompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        @* <td>
+             @Html.DisplayFor(modelItem => item.WarrantyPeriod)
+         </td>
+         <td>
+             @Html.DisplayFor(modelItem => item.LifeTime)
+         </td>
+        <td>
+             @Html.DisplayFor(modelItem => item.Description)
+         </td>
+
+        <td>
+            @if (item.Browsher != null)
+            {
+                @Html.ActionLink("Browsher", "RetrieveBrowsher", new { Controller = "ProductModel", Action = "RetrieveBrowsher", id = item.ProductModelId }, null)
+            }
+        </td>
+        <td>
+            @if (item.Certificate != null)
+            {
+                @Html.ActionLink("Certeficate", "RetrieveCerteficate", new { Controller = "ProductModel", Action = "RetrieveCerteficate", id = item.ProductModelId }, null)
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+            *@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ProductModelId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ProductModelId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ProductModelId })
+        </td>
+    </tr>
+}
+
+</table>

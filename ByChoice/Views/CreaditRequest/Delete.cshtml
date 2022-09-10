@@ -1,0 +1,121 @@
+﻿@model ByChoice.Models.CreaditRequest
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CreaditRequest</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Agent.AgentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Agent.AgentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Micro.MicroName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Micro.MicroName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequestDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequestAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Decline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Decline)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Approved)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Approved)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApprovedDeclineDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApprovedDeclineDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreaditConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreaditConfirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Delivered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Delivered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.New)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.New)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsSelected)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsSelected)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

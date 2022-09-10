@@ -1,0 +1,65 @@
+﻿@model ByChoice.Models.CustomerProductViewModel
+@{
+    ViewBag.Title = "ConfermWarranty";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Conferm Warranty</h2>
+<h3>Are you sure you want to Transfer this?</h3>
+<div>
+    <h4>Agent</h4>
+
+    @using (Html.BeginForm("CustomerProduct", "Customer", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Customer.CustomerId)
+        @Html.HiddenFor(m => m.Customer.FullName)
+        <div class="form-group">
+            @Html.LabelFor(t => t.Customer.FullName, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(t => t.Customer.FullName, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(t => t.Customer.CustomerPhone, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(t => t.Customer.CustomerPhone, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <hr />
+        <table class="table">
+            <tr>
+                <th>
+                    Serial Number
+                </th>
+                <th>
+                    ManufacturedDate
+                </th>
+                <th></th>
+            </tr>
+
+            @for (int i = 0; i < Model.Products.Count(); i++)
+
+            {
+                <tr>
+                    <td>
+                        @Model.Products[i].Serial
+
+                    </td>
+                    <td>
+                        @Model.Products[i].ManufacturedDate.ToShortDateString()
+                    </td>
+                    <td>
+                        @*@Html.CheckBoxFor(m => m.Products[i].IsSelected)*@
+                        @Html.HiddenFor(m => m.Products[i].ProductId)
+                        @Html.HiddenFor(m => m.Products[i].AgentId)
+                        @Html.HiddenFor(m => m.Products[i].Serial)
+                        @Html.HiddenFor(m => m.Products[i].ManufacturedDate)
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Conferm" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

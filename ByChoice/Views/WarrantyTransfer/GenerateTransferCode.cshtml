@@ -1,0 +1,51 @@
+﻿@model ByChoice.Models.WarrantyTransfer
+
+@{
+    ViewBag.Title = "Transfer Code";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Transfer Code</h2>
+
+<div>
+    <h4>Warranty Transfer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.ToAgent.AgentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToAgent.AgentName)
+        </dd>*@
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.FromAgent.AgentName)*@
+            Request to
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FromAgent.AgentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequestDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransferCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransferCode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

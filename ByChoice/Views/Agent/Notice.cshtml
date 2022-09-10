@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ByChoice.Models.AgentNotice>
+
+@{
+    ViewBag.Title = "Notice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Notice</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Notice.NoticeType.NoticeTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notice.PostDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notice.Detail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsSelected)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notice.NoticeType.NoticeTypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notice.PostDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notice.Detail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notice.IsSelected)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "NoticeDetails", new { id = item.AgentNoitceId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.AgentNoitceId })
+            </td>
+        </tr>
+    }
+
+</table>
