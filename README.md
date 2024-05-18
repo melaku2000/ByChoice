@@ -1,7 +1,7 @@
 ![By choice logo](https://github.com/melaku2000/melaku2000/blob/7424646d53bb6b3c72629caeb5c02fb5e106f8b4/buychoice2.png)
 # Warranty and PAYG System
 
-BUY CHOICE Solar Warranty and PAYG System is an open-source warranty registration and PAYG (Pay-As-You-Go) system software. It allows companies to register solar products, track their history, and manage sales agents, call centers, and service centers.
+BY CHOICE Solar Warranty and PAYG System is an open-source warranty registration and PAYG (Pay-As-You-Go) system software. It allows companies to register solar products, track their history, and manage sales agents, call centers, and service centers.
 
 > ByChoice Administrator dashboard
 
